@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectionDetailsTableViewController: UITableViewController {
+class CollectionDetailsTVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

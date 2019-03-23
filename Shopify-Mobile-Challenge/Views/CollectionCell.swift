@@ -7,18 +7,53 @@
 //
 
 import UIKit
+import SnapKit
 
 class CollectionCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    var imageV = UIImageView()
+    var collectionLabel = UILabel()
+    var containerView = UIView()
+    var collection: Collection?
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        containerView = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+        containerView.layer.cornerRadius = 8.0
+        containerView.layer.masksToBounds = false
+        containerView.clipsToBounds = false
+        
+        imageV.kf.setImage(with: URL(string:collection?.imageString ?? "empty"))
+        collectionLabel.text = collection?.title
+        containerView.addSubview(imageV)
+        containerView.addSubview(collectionLabel)
     }
-
+    
+    func setContstrains(){
+        
+        containerView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        imageV.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.left.equalToSuperview().offset(5)
+        }
+        
+        collectionLabel.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.left.equalTo(imageV.snp.right).offset(20)
+        }
+        
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

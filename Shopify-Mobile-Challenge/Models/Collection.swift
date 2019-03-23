@@ -9,11 +9,11 @@
 import Foundation
 
 struct Collection {
-    var id : String
+    var id : Int
     var title : String
     var imageString: String
     
-    init(title: String, imageString: String, id: String){
+    init(title: String, imageString: String, id: Int){
         self.title = title
         self.imageString = imageString
         self.id = id
@@ -33,12 +33,12 @@ extension Collection: Decodable{
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: keys.self)
-        let id = try container.decodeIfPresent(String.self, forKey: .id)
+        let id = try container.decodeIfPresent(Int.self, forKey: .id)
         let title = try container.decodeIfPresent(String.self, forKey: .title)
         let nestedContainer = try container.nestedContainer(keyedBy: nestedKeys.self, forKey: .image)
         let image = try nestedContainer.decodeIfPresent(String.self, forKey: .src)
         
-        self.init(title: title ?? "", imageString: image ?? "", id: id ?? "")
+        self.init(title: title ?? "", imageString: image ?? "", id: id ?? 0)
     }
 }
 

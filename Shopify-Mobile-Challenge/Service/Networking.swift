@@ -51,6 +51,9 @@ class Networking{
         session.dataTask(with: request) { (data, resp, err) in
             
             if let data = data{
+                print(data)
+                let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                print(json)
                 completion(data)
             }
         }.resume()
