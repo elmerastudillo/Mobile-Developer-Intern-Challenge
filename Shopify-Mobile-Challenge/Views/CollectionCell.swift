@@ -23,30 +23,50 @@ class CollectionCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        containerView = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+        
+        backgroundColor = .clear
+        containerView = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width - 40, height: self.frame.height - 100))
         containerView.layer.cornerRadius = 8.0
         containerView.layer.masksToBounds = false
         containerView.clipsToBounds = false
+        containerView.layer.shadowColor = UIColor.black.cgColor
+        containerView.layer.shadowOpacity = 0.1
+        containerView.layer.shadowRadius = 5
+        containerView.layer.shouldRasterize = true
+        containerView.layer.rasterizationScale = UIScreen.main.scale
+        containerView.backgroundColor = UIColor.white
         
         imageV.kf.setImage(with: URL(string:collection?.imageString ?? "empty"))
+        imageV.contentMode = .scaleAspectFit
+        
         collectionLabel.text = collection?.title
+        collectionLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+        
         containerView.addSubview(imageV)
         containerView.addSubview(collectionLabel)
+        self.addSubview(containerView)
+        
+        setContstrains()
     }
     
     func setContstrains(){
         
         containerView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+            make.top.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().offset(-10)
         }
         
         imageV.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(5)
+            make.width.equalTo(50)
+            make.height.equalTo(50)
         }
         
         collectionLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
             make.left.equalTo(imageV.snp.right).offset(20)
         }
         

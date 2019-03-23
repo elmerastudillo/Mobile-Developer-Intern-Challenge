@@ -22,8 +22,8 @@ class CollectionsTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("hello")
-       // self.tableView = UITableView(frame: self.view.frame, style: .plain)
-//        self.tableView.separatorStyle = .none
+        
+        self.tableView.separatorStyle = .none
         self.tableView.showsVerticalScrollIndicator = false
         self.tableView.register(CollectionCell.self, forCellReuseIdentifier: "collectionCell")
         
@@ -54,5 +54,9 @@ class CollectionsTVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "collectionCell", for: indexPath) as! CollectionCell
         cell.collection = collections?[indexPath.row]
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }
