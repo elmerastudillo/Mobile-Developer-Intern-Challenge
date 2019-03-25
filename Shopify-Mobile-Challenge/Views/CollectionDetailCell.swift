@@ -50,6 +50,11 @@ class CollectionDetailCell: UITableViewCell {
         vendorLabel.numberOfLines = 0
         vendorLabel.font = vendorLabel.font.withSize(12)
         
+        let inventory = "Inventory: " + String(describing: product!.inventory)
+        inventoryLabel.text = inventory
+        inventoryLabel.textColor = UIColor.lightGray
+        inventoryLabel.font = inventoryLabel.font.withSize(12)
+        
         containerView.addSubview(imageV)
         containerView.addSubview(titleLabel)
         containerView.addSubview(vendorLabel)
@@ -88,8 +93,10 @@ class CollectionDetailCell: UITableViewCell {
         }
         
         inventoryLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(imageV.snp.bottom)
-            make.left.equalTo(imageV.snp.right).offset(20)
+            make.top.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
+//            make.width.equalTo(30)
+//            make.height.equalTo(30)
         }
     }
     
