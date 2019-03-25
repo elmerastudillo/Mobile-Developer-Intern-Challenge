@@ -16,6 +16,9 @@
 		273E7C3A2245A951009A1509 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273E7C392245A951009A1509 /* Networking.swift */; };
 		273E7C3D2245B069009A1509 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273E7C3C2245B069009A1509 /* CollectionCell.swift */; };
 		273E7C3F2245B081009A1509 /* CollectionDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273E7C3E2245B081009A1509 /* CollectionDetailCell.swift */; };
+		27AE8D652247FC7300C1CC7A /* Collect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AE8D642247FC7300C1CC7A /* Collect.swift */; };
+		27AE8D672247FEF200C1CC7A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AE8D662247FEF200C1CC7A /* Product.swift */; };
+		27AE8D6922485DEE00C1CC7A /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AE8D6822485DEE00C1CC7A /* DetailHeaderView.swift */; };
 		C9AB7E6F8DB5509BB7C3D94C /* Pods_Shopify_Mobile_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B4D27FF7E74E77DBC4A015 /* Pods_Shopify_Mobile_Challenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +34,9 @@
 		273E7C392245A951009A1509 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		273E7C3C2245B069009A1509 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 		273E7C3E2245B081009A1509 /* CollectionDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDetailCell.swift; sourceTree = "<group>"; };
+		27AE8D642247FC7300C1CC7A /* Collect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collect.swift; sourceTree = "<group>"; };
+		27AE8D662247FEF200C1CC7A /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		27AE8D6822485DEE00C1CC7A /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
 		74B4D27FF7E74E77DBC4A015 /* Pods_Shopify_Mobile_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopify_Mobile_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4A46562E928470795B3E0E2 /* Pods-Shopify-Mobile-Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-Mobile-Challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shopify-Mobile-Challenge/Pods-Shopify-Mobile-Challenge.release.xcconfig"; sourceTree = "<group>"; };
 		D4E2E790FD6233C70F2B9ED3 /* Pods-Shopify-Mobile-Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopify-Mobile-Challenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shopify-Mobile-Challenge/Pods-Shopify-Mobile-Challenge.debug.xcconfig"; sourceTree = "<group>"; };
@@ -103,6 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				273E7C362245844D009A1509 /* Collection.swift */,
+				27AE8D642247FC7300C1CC7A /* Collect.swift */,
+				27AE8D662247FEF200C1CC7A /* Product.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -120,6 +128,7 @@
 			children = (
 				273E7C3C2245B069009A1509 /* CollectionCell.swift */,
 				273E7C3E2245B081009A1509 /* CollectionDetailCell.swift */,
+				27AE8D6822485DEE00C1CC7A /* DetailHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -255,10 +264,13 @@
 			files = (
 				273E7C3F2245B081009A1509 /* CollectionDetailCell.swift in Sources */,
 				273E7C2022458092009A1509 /* AppDelegate.swift in Sources */,
+				27AE8D672247FEF200C1CC7A /* Product.swift in Sources */,
 				273E7C3A2245A951009A1509 /* Networking.swift in Sources */,
 				273E7C3222458120009A1509 /* CollectionsTVC.swift in Sources */,
 				273E7C342245813E009A1509 /* CollectionDetailsTVC.swift in Sources */,
 				273E7C372245844D009A1509 /* Collection.swift in Sources */,
+				27AE8D6922485DEE00C1CC7A /* DetailHeaderView.swift in Sources */,
+				27AE8D652247FC7300C1CC7A /* Collect.swift in Sources */,
 				273E7C3D2245B069009A1509 /* CollectionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

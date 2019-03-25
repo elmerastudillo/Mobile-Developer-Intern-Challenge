@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class CollectionsTVC: UITableViewController {
     
@@ -21,31 +20,23 @@ class CollectionsTVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("hello")
+        self.navigationItem.title = "Collections";
         
         self.tableView.separatorStyle = .none
         self.tableView.showsVerticalScrollIndicator = false
         self.tableView.register(CollectionCell.self, forCellReuseIdentifier: "collectionCell")
         
+        networking(route: .collections)
         
-        let networking = Networking.shared
-        networking.fetch(route: .collections) { (data) in
-            let collectionData = try? JSONDecoder().decode(Collections.self, from: data)
-            guard let allCollections = collectionData?.custom_collections else {return}
-            self.collections = allCollections
-            print(self.collections)
-        }
     }
-
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return collections?.count ?? 0
     }
 
@@ -58,5 +49,27 @@ class CollectionsTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let collections = self.collections{
+            let collection = collections[indexPath.row]
+            let collectionDetailsTVC = CollectionDetailsTVC()
+            collectionDetailsTVC.collection = collection
+            self.navigationController?.pushViewController(collectionDetailsTVC, animated: true)
+        }
+        
+    }
+}
+
+extension CollectionsTVC{
+    // MARK: - Helpers
+    func networking(route: Route){
+        let networking = Networking.shared
+        networking.fetch(route: route) { (data) in
+            let collectionData = try? JSONDecoder().decode(Collections.self, from: data)
+            guard let allCollections = collectionData?.custom_collections else {return}
+            self.collections = allCollections
+        }
     }
 }

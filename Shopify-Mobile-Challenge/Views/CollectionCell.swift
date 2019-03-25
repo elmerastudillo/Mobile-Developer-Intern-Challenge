@@ -23,7 +23,6 @@ class CollectionCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         backgroundColor = .clear
         containerView = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width - 40, height: self.frame.height - 100))
         containerView.layer.cornerRadius = 8.0
@@ -32,8 +31,6 @@ class CollectionCell: UITableViewCell {
         containerView.layer.shadowColor = UIColor.black.cgColor
         containerView.layer.shadowOpacity = 0.1
         containerView.layer.shadowRadius = 5
-        containerView.layer.shouldRasterize = true
-        containerView.layer.rasterizationScale = UIScreen.main.scale
         containerView.backgroundColor = UIColor.white
         
         imageV.kf.setImage(with: URL(string:collection?.imageString ?? "empty"))

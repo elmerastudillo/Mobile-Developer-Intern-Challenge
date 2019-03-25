@@ -11,18 +11,23 @@ import Foundation
 enum Route {
     
     case collections
+    case collect(id: String)
     case products(id: String)
-    
     
     func parameters() -> [String: String] {
         switch self {
         case .collections:
             return ["access_token": "c32313df0d0ef512ca64d5b336a0d7c6"]
+            
         case let .products(id):
             return ["access_token": "c32313df0d0ef512ca64d5b336a0d7c6",
                     "ids": id
             ]
             
+        case let .collect(id):
+            return ["access_token": "c32313df0d0ef512ca64d5b336a0d7c6",
+                    "collection_id": id
+            ]
         }
     }
     
@@ -33,6 +38,9 @@ enum Route {
             
         case .products:
             return "https://shopicruit.myshopify.com/admin/products.json"
+        
+        case .collect:
+            return "https://shopicruit.myshopify.com/admin/collects.json"
         }
     }
 }
@@ -49,11 +57,7 @@ class Networking{
         let request = URLRequest(url: fullURL!)
         
         session.dataTask(with: request) { (data, resp, err) in
-            
             if let data = data{
-                print(data)
-                let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                print(json)
                 completion(data)
             }
         }.resume()
@@ -90,5 +94,4 @@ extension Dictionary : URLQueryParameterStringConvertible {
         }
         return parts.joined(separator: "&")
     }
-    
 }

@@ -12,11 +12,13 @@ struct Collection {
     var id : Int
     var title : String
     var imageString: String
+    var body: String
     
-    init(title: String, imageString: String, id: Int){
+    init(title: String, body: String, imageString: String, id: Int){
         self.title = title
         self.imageString = imageString
         self.id = id
+        self.body = body
     }
 }
 
@@ -25,6 +27,7 @@ extension Collection: Decodable{
         case id
         case title
         case image
+        case body = "body_html"
     }
     
     enum nestedKeys: String, CodingKey{
@@ -35,10 +38,11 @@ extension Collection: Decodable{
         let container = try decoder.container(keyedBy: keys.self)
         let id = try container.decodeIfPresent(Int.self, forKey: .id)
         let title = try container.decodeIfPresent(String.self, forKey: .title)
+        let body = try container.decodeIfPresent(String.self, forKey: .body)
         let nestedContainer = try container.nestedContainer(keyedBy: nestedKeys.self, forKey: .image)
         let image = try nestedContainer.decodeIfPresent(String.self, forKey: .src)
         
-        self.init(title: title ?? "", imageString: image ?? "", id: id ?? 0)
+        self.init(title: title ?? "",body: body ?? "" , imageString: image ?? "", id: id ?? 0)
     }
 }
 
