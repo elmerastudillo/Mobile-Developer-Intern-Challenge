@@ -30,11 +30,11 @@ class DetailHeaderView: UITableViewHeaderFooterView {
         super.layoutSubviews()
         guard let collection = self.collection else { return }
         collectionTitleLabel.text = collection.title
+        collectionTitleLabel.textAlignment = .center
         collectionTitleLabel.font = UIFont.boldSystemFont(ofSize: 18.0)
         collectionDescriptionLabel.text = collection.body
-        collectionDescriptionLabel.font = collectionDescriptionLabel.font.withSize(12)
+        collectionDescriptionLabel.font = collectionDescriptionLabel.font?.withSize(12)
         collectionDescriptionLabel.textAlignment = .center
-        collectionDescriptionLabel.sizeToFit()
         collectionDescriptionLabel.numberOfLines = 0
         imageView.kf.setImage(with: URL(string: collection.imageString))
         
@@ -63,6 +63,7 @@ class DetailHeaderView: UITableViewHeaderFooterView {
             make.top.equalTo(collectionTitleLabel.snp.bottom).offset(5)
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
+            make.centerX.equalTo(collectionTitleLabel.snp.centerX)
         }
     }
 }
